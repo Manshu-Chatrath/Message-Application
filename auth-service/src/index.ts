@@ -14,7 +14,7 @@ app.get("/sda", (req: Request, res: Response) => {
 sequelize
   .sync()
   .then((res) => {
-    console.log("boom");
+    console.log("boom fghg");
     app.listen(4000, () => console.log("Listening on port: 4000"));
   })
   .catch((err) => console.log(err));
