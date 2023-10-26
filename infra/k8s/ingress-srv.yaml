@@ -35,4 +35,4 @@ spec:
               service:
                 name: client-cluserip-srv
                 port:
-                  number: 4002
+                  number: 3000
