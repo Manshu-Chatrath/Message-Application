@@ -29,10 +29,3 @@ spec:
                 name: message-service-cluserip-srv
                 port:
                   number: 4002
-          - path: /client
-            pathType: ImplementationSpecific
-            backend:
-              service:
-                name: client-cluserip-srv
-                port:
-                  number: 3000
