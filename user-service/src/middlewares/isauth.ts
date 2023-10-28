@@ -8,7 +8,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
 
   let decoded;
   try {
-    decoded = jwt.verify(token, key.secretKey);
+    decoded = jwt.verify(token, process.env.JWT_KEY);
     user.id = decoded.userId;
     if (decoded) {
       next();

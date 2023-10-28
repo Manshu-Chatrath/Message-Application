@@ -6,7 +6,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
   const token = auth;
   let decoded;
   try {
-    decoded = jwt.verify(token, key.secretKey);
+    decoded = jwt.verify(token, process.env.JWT_KEY);
     if (decoded) {
       next();
     }
