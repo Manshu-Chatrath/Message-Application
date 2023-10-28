@@ -4,7 +4,6 @@ import { v1 as uuid } from "uuid";
 import { DataBaseConnectionError } from "../errors/database-connection-error";
 import { isAuth, user } from "../middlewares/isauth";
 import User from "../models/user";
-import { key } from "../../config/key";
 const router = express.Router();
 
 interface Image {
@@ -13,8 +12,8 @@ interface Image {
 
 const s3 = new AWS.S3({
   credentials: {
-    accessKeyId: key.awsAccessKey,
-    secretAccessKey: key.awsSecretKey,
+    accessKeyId: process.env.AWS_ACCESS_KEY!,
+    secretAccessKey: process.env.AWS_SECRET_KEY!,
   },
   region: "ca-central-1",
 });
@@ -23,7 +22,7 @@ const getSignedUrl = (imageKey: string, res: Response) => {
   s3.getSignedUrl(
     "putObject",
     {
-      Bucket: key.awsBucketName,
+      Bucket: process.env.AWS_BUCKET_NAME,
       Key: imageKey,
       ContentType: "image/*",
       Expires: 360000,
@@ -50,7 +49,7 @@ router.get(
       if (imageId) {
         s3.deleteObject(
           {
-            Bucket: key.awsBucketName,
+            Bucket: process.env.AWS_BUCKET_NAME!,
             Key: `${user.id}/${imageId}`,
           },
           function (err: Error, data) {
@@ -79,7 +78,7 @@ router.post(
   isAuth,
   async (req: Request, res: Response) => {
     const { url } = req.body;
-    const imageUrl = `https://${key.awsBucketName}.s3.ca-central-1.amazonaws.com/${url}`;
+    const imageUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.ca-central-1.amazonaws.com/${url}`;
 
     try {
       let obj: Image = { src: imageUrl };

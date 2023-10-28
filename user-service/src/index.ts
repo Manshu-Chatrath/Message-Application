@@ -21,7 +21,11 @@ app.use(getSignedInUserRouter);
 app.use(addFriendRouter);
 const start = async () => {
   try {
-    await natsClient.connect(key.natsClusterId, "czxfd", key.natsUrl);
+    await natsClient.connect(
+      process.env.NATS_URL!,
+      "czxfd",
+      process.env.NATS_CLUSTER_ID!
+    );
     natsClient.client.on("close", () => {
       console.log("NATS connection closed!");
       process.exit();

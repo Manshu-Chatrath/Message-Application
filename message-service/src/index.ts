@@ -17,12 +17,16 @@ const io = new Server(server, {
     methods: ["GET", "POST"],
   },
 });
-
+console.log(process.env.NATS_CLUSER_ID, " ", process.env.AWS_ACCESS_KEY);
 export const socketInstance = new SocketIo(io);
 socketInstance.initialize();
 const start = async () => {
   try {
-    await natsClient.connect(key.natsClusterId, "czx", key.natsUrl);
+    await natsClient.connect(
+      process.env.NATS_URL!,
+      "czx",
+      process.env.NATS_CLUSTER_ID!
+    );
     natsClient.client.on("close", () => {
       console.log("NATS connection closed!");
       process.exit();
