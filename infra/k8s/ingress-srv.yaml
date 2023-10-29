@@ -12,7 +12,7 @@ spec:
     - hosts:
         - messaging-app-prod.chat.com
         - www.messaging-app-prod.chat.com
-      secretName: messaging-app-prod.chat-com-tls
+      secretName: messaging-app-prod.chat-com
   rules:
     - host: messaging-app-prod.chat
       http:
