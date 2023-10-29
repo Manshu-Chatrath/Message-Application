@@ -10,4 +10,3 @@ spec:
   commonName: messaging-app-prod.chat.com
   dnsNames:
     - messaging-app-prod.chat.com
-    - www.messaging-app-prod.chat.com
