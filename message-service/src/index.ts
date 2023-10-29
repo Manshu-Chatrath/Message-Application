@@ -29,9 +29,9 @@ socketInstance.initialize();
 const start = async () => {
   try {
     await natsClient.connect(
-      process.env.NATS_URL!,
-      "czx",
-      process.env.NATS_CLUSTER_ID!
+      process.env.NATS_CLUSTER_ID!,
+      "czxfd",
+      process.env.NATS_URL!
     );
     natsClient.client.on("close", () => {
       console.log("NATS connection closed!");
