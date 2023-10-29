@@ -13,11 +13,11 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://message-application-e0a2c7e4d415.herokuapp.com",
     methods: ["GET", "POST"],
   },
 });
-console.log(process.env.NATS_CLUSER_ID, " ", process.env.AWS_ACCESS_KEY);
+
 export const socketInstance = new SocketIo(io);
 socketInstance.initialize();
 const start = async () => {
