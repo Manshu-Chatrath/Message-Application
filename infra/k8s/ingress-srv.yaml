@@ -11,9 +11,34 @@ spec:
   tls:
     - hosts:
         - messaging-app-prod.chat.com
-      secretName: messaging-app-prod.chat-com
+        - www.messaging-app-prod.chat.com
+      secretName: messaging-app-prod.chat-com-tls
   rules:
     - host: messaging-app-prod.chat
+      http:
+        paths:
+          - path: /auth-service
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: auth-service-cluserip-srv
+                port:
+                  number: 4000
+          - path: /user-service
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: user-service-cluserip-srv
+                port:
+                  number: 4001
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: message-service-cluserip-srv
+                port:
+                  number: 4002
+    - host: www.messaging-app-prod.chat.com
       http:
         paths:
           - path: /auth-service
