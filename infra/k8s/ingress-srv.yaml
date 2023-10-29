@@ -38,7 +38,7 @@ spec:
                 name: message-service-cluserip-srv
                 port:
                   number: 4002
-    - host: www.messaging-app-prod.chat
+    - host: www.messaging-app-prod.chat.com
       http:
         paths:
           - path: /auth-service
