@@ -16,10 +16,6 @@ app.use(loginRouter);
 sequelize
   .sync()
   .then((res) => {
-    console.log(process.env.DATABASE_USERNAME);
-    console.log(process.env.DATABASE_HOST);
-    console.log(process.env.DATABASE_NAME);
-    console.log(process.env.DATABASE_PASSWORD);
     app.listen(4000, () => console.log("Listening on port: 4000"));
   })
   .catch((err) => console.log(err));
