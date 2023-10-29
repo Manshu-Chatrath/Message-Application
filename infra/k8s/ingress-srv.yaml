@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: message-app.com
+    - host: www.messaging-app-prod.chat
       http:
         paths:
           - path: /auth-service

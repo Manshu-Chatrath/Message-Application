@@ -8,7 +8,9 @@ app.use(cors());
 app.use(express.json());
 app.use(signUpRouter);
 app.use(loginRouter);
-
+app.get("/sda", (req: Request, res: Response) => {
+  return res.send({ message: "Logged Out!" });
+});
 sequelize
   .sync()
   .then((res) => {
