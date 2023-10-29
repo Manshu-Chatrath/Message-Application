@@ -11,7 +11,11 @@ import { getSignedInUserRouter } from "./routes/getSignedInUser";
 import { key } from "../config/key";
 const app = express();
 const cors = require("cors");
-app.use(cors());
+const corsOptions = {
+  origin: "https://message-application-e0a2c7e4d415.herokuapp.com", // Replace with your Heroku app's domain
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(deleteRouter);
 app.use(userEditRouter);
