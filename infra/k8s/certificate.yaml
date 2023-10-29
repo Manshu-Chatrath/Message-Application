@@ -1,9 +1,7 @@
 apiVersion: cert-manager.io/v1
-
 kind: Certificate
 metadata:
   name: messaging-app-prod.chat-com
-  namespace: cert-manager
 spec:
   secretName: messaging-app-prod.chat-com
   issuerRef:
