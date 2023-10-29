@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+
+kind: Certificate
+metadata:
+  name: messaging-app-prod.chat-tls
+spec:
+  secretName: messaging-app-prod.chat-com
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  commonName: messaging-app-prod.chat.com
+  dnsNames:
+    - messaging-app-prod.chat.com
+    - www.messaging-app-prod.chat.com
