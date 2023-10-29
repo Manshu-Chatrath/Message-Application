@@ -11,10 +11,3 @@ spec:
   dnsNames:
     - messaging-app-prod.chat.com
     - www.messaging-app-prod.chat.com
-  acme:
-    config:
-      - http01:
-          ingressClass: nginx
-        domains:
-          - messaging-app-prod.chat.com
-          - www.messaging-app-prod.chat.com
