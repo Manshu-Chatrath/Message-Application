@@ -4,13 +4,15 @@ import { signUpRouter } from "./routes/signup";
 import { loginRouter } from "./routes/signin";
 const app = express();
 const cors = require("cors");
-app.use(cors());
+const corsOptions = {
+  origin: "https://message-application-e0a2c7e4d415.herokuapp.com", // Replace with your Heroku app's domain
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(signUpRouter);
 app.use(loginRouter);
-app.get("/sda", (req: Request, res: Response) => {
-  return res.send({ message: "Logged Out!" });
-});
+
 sequelize
   .sync()
   .then((res) => {

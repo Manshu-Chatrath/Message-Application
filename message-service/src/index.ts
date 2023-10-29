@@ -6,9 +6,15 @@ import { SocketIo } from "./service/socketIo";
 import { key } from "../config/key";
 import { natsClient } from "./natsClient";
 const app = express();
-const cors = require("cors");
+
 const http = require("http");
-app.use(cors());
+const cors = require("cors");
+const corsOptions = {
+  origin: "https://message-application-e0a2c7e4d415.herokuapp.com", // Replace with your Heroku app's domain
+};
+
+app.use(cors(corsOptions));
+
 app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
