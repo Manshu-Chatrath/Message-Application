@@ -9,7 +9,6 @@ const app = express();
 
 const http = require("http");
 const cors = require("cors");
-const cors = require("cors");
 app.use(cors());
 
 app.use(express.json());

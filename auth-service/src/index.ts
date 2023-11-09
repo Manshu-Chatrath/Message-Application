@@ -5,8 +5,6 @@ import { loginRouter } from "./routes/signin";
 const app = express();
 const cors = require("cors");
 app.use(cors());
-
-
 app.use(express.json());
 app.use(signUpRouter);
 app.use(loginRouter);
