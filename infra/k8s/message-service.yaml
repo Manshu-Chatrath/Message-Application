@@ -66,10 +66,9 @@ kind: Service
 metadata:
   name: message-service-cluserip-srv
   annotations:
-    service.beta.kubernetes.io/do-loadbalancer-protocol: "https"
+    service.beta.kubernetes.io/do-loadbalancer-protocol: "http"
     service.beta.kubernetes.io/do-loadbalancer-certificate-id: "9d8c9fe3-11e8-430b-9850-f91a3119761a"
-    service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "false"
-    service.beta.kubernetes.io/do-loadbalancer-redirect-http-to-https: "true"
+    service.beta.kubernetes.io/do-loadbalancer-tls-ports: "4002"
 spec:
   type: LoadBalancer
   selector:
